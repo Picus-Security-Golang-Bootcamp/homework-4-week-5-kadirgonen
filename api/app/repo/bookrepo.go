@@ -28,3 +28,10 @@ func DeleteBook(id int) model.Book {
 	config.DB.Where("id=?", id).Delete(&book)
 	return book
 }
+func GetSearchBook(bookName string) model.Book {
+	var book model.Book
+
+	config.DB.Where("names ILIKE ? ", "%"+bookName+"%").Find(&book)
+
+	return book
+}
