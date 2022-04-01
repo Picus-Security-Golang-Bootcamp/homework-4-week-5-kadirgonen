@@ -35,3 +35,17 @@ func GetSearchBook(bookName string) model.Book {
 
 	return book
 }
+func BuyBookByID(id int, number int) (model.Book, error) {
+	var book model.Book
+	err := config.DB.Where(model.Book{BookID: id}).Find(&book)
+	if err == nil {
+		log.Fatal("Stock Not Found: ", err)
+	} else {
+		book.StockNumber = book.StockNumber - int(number)
+		result := config.DB.Save(book)
+		if result.Error != nil {
+			return book, result.Error
+		}
+	}
+	return book, nil
+}
