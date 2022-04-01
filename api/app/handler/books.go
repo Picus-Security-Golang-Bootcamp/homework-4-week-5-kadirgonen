@@ -89,3 +89,19 @@ func GetSearchBook(w http.ResponseWriter, r *http.Request) {
 	book = repositories.GetSearchBook(name)
 	json.NewEncoder(w).Encode(book)
 }
+func BuyBookByID(w http.ResponseWriter, r *http.Request) {
+	var book model.Book
+	w.Header().Set("Content-Type", "application/json")
+	params := mux.Vars(r)
+	number, _ := strconv.Atoi(params["number"])
+	id, err := strconv.Atoi(params["id"])
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode("Stock Not Found")
+		return
+	}
+	w.WriteHeader(http.StatusOK)
+	book, err = repositories.BuyBookByID(id, number)
+	json.NewEncoder(w).Encode(book)
+
+}
