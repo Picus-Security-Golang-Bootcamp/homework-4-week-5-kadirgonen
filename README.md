@@ -21,6 +21,7 @@ The book areas are as follows;
 4. GORM Queries writte.
 5. Creating a handle functions.
 6. As a result also complete RESTful API.
+7. Checking with Postman app.
 
  
 ## Used Handle Functions
@@ -32,6 +33,7 @@ The book areas are as follows;
 	HandleFunc("/books/{id}", GetBook).Methods("GET")
         HandleFunc("/books/{id}", UpdateBook).Methods("PUT")
 	HandleFunc("/books/{id}", DeleteBook).Methods("DELETE")
+	HandleFunc("/bookname/{name}", GetSearchBook).Methods("GET")
 ```
 These functions allow us to create a RESTful API with the books we define in the application.
 
