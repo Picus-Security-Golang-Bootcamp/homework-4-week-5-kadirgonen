@@ -34,33 +34,6 @@ type Author struct {
 	ID   int32  `json:"id"  gorm:"primary_key"`
 	Name string `json:"name"`
 }
-
-// func main() {
-// 	// jsonFile, err := os.Open("books.json")
-// 	// if err != nil {
-// 	// 	fmt.Println(err)
-// 	// }
-// 	// defer jsonFile.Close()
-// 	// values, _ := ioutil.ReadAll(jsonFile)
-// 	// bookJson := Books{}
-// 	// json.Unmarshal(values, &bookJson)
-
-// 	dsn := "host=localhost user=postgres password=2236386alper dbname=PatikaGoDB port=5432 sslmode=disable TimeZone=Asia/Shanghai"
-// 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-// 	if err != nil {
-// 		fmt.Println(err)
-// 	}
-// 	db.AutoMigrate()
-
-// 	// db.Migrator().CurrentDatabase()
-// 	// db.Migrator().CreateTable(&Author{})
-// 	// db.Migrator().CreateTable(&Book{})
-
-// 	// for _, book := range bookJson.Books {
-// 	// 	db.FirstOrCreate(&book)
-// 	// }
-// }
-
 // DBMigrate will create and migrate the tables, and then make the some relationships if necessary
 func DBMigrate(db *gorm.DB) *gorm.DB {
 	db.AutoMigrate(&Book{})
