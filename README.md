@@ -30,7 +30,7 @@ The book areas are as follows;
 	HandleFunc("/books", GetAllBooks).Methods("GET")
 	HandleFunc("/books", CreateBook).Methods("POST")
 	HandleFunc("/books/{id}", GetBook).Methods("GET")
-  HandleFunc("/books/{id}", UpdateBook).Methods("PUT")
+        HandleFunc("/books/{id}", UpdateBook).Methods("PUT")
 	HandleFunc("/books/{id}", DeleteBook).Methods("DELETE")
 ```
 These functions allow us to create a RESTful API with the books we define in the application.
