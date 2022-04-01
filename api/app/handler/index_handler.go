@@ -13,6 +13,7 @@ func IndexRouting() *mux.Router {
 	r.HandleFunc("/books/{id}", UpdateBook).Methods("PUT")
 	r.HandleFunc("/books/{id}", DeleteBook).Methods("DELETE")
 	r.HandleFunc("/bookname/{name}", GetSearchBook).Methods("GET")
+	r.HandleFunc("/books/{id}/{number}", BuyBookByID).Methods("GET")
 	//? <--------------------Authors-------------------------->
 	r.HandleFunc("/authors", GetAllAuthors).Methods("GET")
 	r.HandleFunc("/authors/{id}", GetAuthor).Methods("GET")
