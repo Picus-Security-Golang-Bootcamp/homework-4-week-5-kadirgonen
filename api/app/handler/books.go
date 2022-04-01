@@ -75,3 +75,17 @@ func DeleteBook(w http.ResponseWriter, r *http.Request) {
 	repositories.DeleteBook(id)
 	json.NewEncoder(w).Encode("Deleted")
 }
+func GetSearchBook(w http.ResponseWriter, r *http.Request) {
+	var book model.Book
+	w.Header().Set("Content-Type", "application/json")
+	params := mux.Vars(r)
+	name, err := params["name"]
+	if err != true {
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode("Not Found")
+		return
+	}
+	w.WriteHeader(http.StatusOK)
+	book = repositories.GetSearchBook(name)
+	json.NewEncoder(w).Encode(book)
+}
