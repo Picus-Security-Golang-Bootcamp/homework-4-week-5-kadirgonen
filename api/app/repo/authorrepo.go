@@ -12,7 +12,7 @@ func GetAllAuthors() []model.Author {
 }
 func GetAuthor(id int) model.Author {
 	var author model.Author
-	config.DB.First(&author, id)
+	config.DB.Preload("Book").First(&author, id)
 	return author
 }
 func CreateAuthor(author model.Author) model.Author {
