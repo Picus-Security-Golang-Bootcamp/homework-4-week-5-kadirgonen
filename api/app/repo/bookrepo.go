@@ -12,7 +12,7 @@ func GetAllBooks() []model.Book {
 }
 func GetBook(id int) model.Book {
 	var book model.Book
-	config.DB.First(&book, id)
+	config.DB.Preload("Author").First(&book, id)
 	return book
 }
 func CreateBook(book model.Book) model.Book {
